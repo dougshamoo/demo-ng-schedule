@@ -8,8 +8,7 @@
 
     $stateProvider
       .state('home', {
-        url: '/',
-        template: '<div>Please Log in</div>'
+        url: '/'
       })
       .state('login', {
         url: '/login',
@@ -21,7 +20,17 @@
         url: '/calendar',
         templateUrl: 'app/calendar/calendar.html',
         controller: 'Calendar',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        resolve: {
+          auth: ['authservice', '$q', function(authservice, $q) {
+            var user = authservice.getUserInfo();
+            if (user) {
+              return $q.when(user);
+            } else {
+              return $q.reject({authenticated: false});
+            }
+          }]
+        }
       });
   }
 })()

@@ -2,5 +2,5 @@
     'use strict';
 
     angular
-        .module('app.calendar', []);
+        .module('app.calendar', ['ui.calendar']);
 })();

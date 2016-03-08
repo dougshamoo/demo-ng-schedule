@@ -1,0 +1,17 @@
+<div id="sidebar-wrapper">
+  <ul class="sidebar-nav">
+    <li class="sidebar-brand">
+      <a href="">{{vm.title}}</a>
+    </li>
+    <li ng-hide="vm.auth()" ui-sref="login">
+      <a href="">Log in</a>
+    </li>
+    <li ng-repeat="link in vm.links" ui-sref="{{link.sref}}">
+      <a href="">{{link.name}}</a>
+    </li>
+    <li ng-show="vm.auth()" ng-click="vm.logout()">
+      <a href="">Log out</a>
+    </li>
+    
+  </ul>
+</div>

@@ -3,27 +3,77 @@
 <head>
   <title>Demo: ngSchedule</title>
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/fullcalendar.min.css">
+  <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
 <body ng-app="app">
-<h1>Demo: ngSchedule</h1>
-<div ui-view></div>
+  <!-- <h1>Demo: ngSchedule</h1
+  <div class="row"></div>
+    <sidebar class="col-xs-3" id="sidebar"></sidebar>
+    <div class="col-xs-9" ui-view></div>
+  </div> -->
+
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <sidebar></sidebar>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                <div ui-view class="col-lg-12"></div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+     <!-- /#wrapper -->
+
+<!-- Bootstrap dependencies -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Menu Toggle Script -->
+<script>
+  $("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+  });
+</script>
 
 <!-- Angular Dependencies -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-animate.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-touch.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-messages.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.2.1/ui-bootstrap.js"></script>
+
+<!-- Angular UI Calendar Dependencies -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/fullcalendar.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-calendar/1.0.0/calendar.js"></script>
+
 
 <!-- App dependencies -->
 <script type="text/javascript" src="./app/app.module.js"></script>
 <script type="text/javascript" src="./app/core/core.module.js"></script>
 <script type="text/javascript" src="./app/core/core.router.js"></script>
+<script type="text/javascript" src="./app/core/authservice.js"></script>
+<script type="text/javascript" src="./app/core/dataservice.js"></script>
 
 <script type="text/javascript" src="./app/login/login.module.js"></script>
 <script type="text/javascript" src="./app/login/login.js"></script>
 
 <script type="text/javascript" src="./app/calendar/calendar.module.js"></script>
 <script type="text/javascript" src="./app/calendar/calendar.js"></script>
+
+<script type="text/javascript" src="./app/sidebar/sidebar.module.js"></script>
+<script type="text/javascript" src="./app/sidebar/sidebar.js"></script>
+<script type="text/javascript" src="./app/sidebar/sidebar.directive.js"></script>
 </body>
 </html>

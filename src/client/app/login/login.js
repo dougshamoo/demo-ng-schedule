@@ -5,18 +5,31 @@
         .module('app.login')
         .controller('Login', Login);
 
-    // Login.$inject = [];
+    Login.$inject = ['authservice', '$state'];
 
-    /* @ngInject */
-    function Login() {
+    function Login(authservice, $state) {
         var vm = this;
         vm.title = 'Login';
+        vm.user = '';
+        vm.pass = '';
+        vm.login = login;
+        vm.error = '';
 
-        activate();
+        // activate();
 
         ////////////////
 
-        function activate() {
+        function login() {
+            vm.error = '';
+            authservice.login(vm.user, vm.pass)
+            .then(function(result) {
+                $state.go('calendar');
+            }, function(err) {
+                vm.error = err.data.error;
+            });
         }
+
+        // function activate() {
+        // }
     }
 })();

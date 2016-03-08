@@ -1,1 +1,37 @@
 <h3>{{vm.title}}</h3>
+<div class="container">
+
+  <form class="form-signin" name="loginForm">
+    <h2 class="form-signin-heading">Please log in...</h2>
+    <input id="inputUser"
+          name="name"
+          type="text"
+          class="form-control"
+          placeholder="Username"
+          ng-model="vm.user"
+          required
+          autofocus>
+    <input id="inputPassword"
+          name="pass"
+          type="password"          
+          class="form-control"
+          placeholder="Password"
+          ng-model="vm.pass"
+          required>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click='vm.login()'>Sign in</button>
+
+    <!-- Better for a register form, but can still be used to validate user/pass rules -->
+    <div ng-messages="loginForm.name.$touched && loginForm.name.$error" style="color:maroon" role="alert">
+      <div ng-message="required">*You did not enter a name*</div>
+    </div>
+    <div ng-messages="loginForm.pass.$touched && loginForm.pass.$error" style="color:maroon" role="alert">
+      <div ng-message="required">*You did not enter a password*</div>
+    </div>
+
+    <div style="color:maroon" ng-show="!!vm.error.length">
+      <p>*{{vm.error}}*</p>
+    </div>
+  
+  </form>
+
+</div>
